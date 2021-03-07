@@ -4,7 +4,7 @@ import android.content.Context
 import com.app.network_module.models.response.DataResponse
 
 internal interface BindHolder {
-    fun bindHolder(
+    fun bind(
         position: Int,
         mListClickLister: ListClickListener,
         mContext: Context,

@@ -7,8 +7,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 internal object Constants {
 
     val API_SECRET: String = ""
-    var BASE_URL = BuildConfig.BASE_URL
-
     val LOG_LEVEL_API = HttpLoggingInterceptor.Level.BODY
 
     const val API_CONNECT_TIMEOUT: Long = 10

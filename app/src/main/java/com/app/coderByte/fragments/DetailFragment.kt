@@ -2,23 +2,13 @@ package com.app.coderByte.fragments
 
 
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProviders
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.app.coderByte.R
-import com.app.coderByte.databinding.FragmentHomeBinding
 import com.app.coderByte.viewmodels.MainActivityViewModel
-import java.util.*
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.app.coderByte.ApplicationClass
-import com.app.coderByte.adapter.DataAdapter
 import com.app.coderByte.adapter.ImagePagerAdapter
 import com.app.coderByte.databinding.FragmentDetailBinding
-import com.app.coderByte.interfaces.ListClickListener
 import com.app.coderByte.utils.*
 import com.app.network_module.models.response.DataResponse
 import com.google.android.material.tabs.TabLayoutMediator
@@ -56,15 +46,10 @@ internal class DetailFragment : BaseFragment() {
 
     private fun setData(it: ArrayList<DataResponse>) {
         dataList = it
-        val dataItem = position?.let { it1 -> dataList.get(it1) }
-        mBinding.tvPrice.text = dataItem?.price ?: ""
-        mBinding.tvTitle.text = dataItem?.name?.capitalizeWords() ?: ""
-        mBinding.tvPriceTitle.text =
-            ApplicationClass.languageJson?.listingScreen?.priceTitle ?: ""
-        mBinding.tvDataTitle.text = ApplicationClass.languageJson?.listingScreen?.dateTitle ?: ""
-        dataItem?.createdAt?.let {
-            mBinding.tvDate.text = requireContext().parseDate(it)
-        }
+        val dataItem = position?.let { it1 -> dataList[it1] }
+        mBinding.dataResponse = dataItem
+        mBinding.priceTitle = ApplicationClass.languageJson?.listingScreen?.priceTitle ?: ""
+        mBinding.dateTitle = ApplicationClass.languageJson?.listingScreen?.dateTitle ?: ""
         dataItem?.let { it1 -> imagesAdapter.setData(it1) }
 
     }

@@ -14,7 +14,6 @@ object ApiRepository {
     private val api = RetrofitBuilder.getRetrofitInstance(Enums.RetrofitBaseUrl.BASE_URL)
 
     suspend fun callGetData(): Result<Response<ResponseGeneralArray<DataResponse>>> {
-
         return try {
             Success(api.getData())
         } catch (e: Exception) {

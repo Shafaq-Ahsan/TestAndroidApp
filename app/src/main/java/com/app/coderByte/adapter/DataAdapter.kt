@@ -2,7 +2,6 @@ package com.app.coderByte.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.coderByte.ApplicationClass
@@ -35,7 +34,7 @@ internal class DataAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is BindHolder -> holder.bindHolder(position, mListClickLister, mContext, list)
+            is BindHolder -> holder.bind(position, mListClickLister, mContext, list)
         }
     }
 
@@ -75,13 +74,13 @@ private class ListViewHolder(
         }
     }
 
-    override fun bindHolder(
+    override fun bind(
         position: Int,
         mListClickLister: ListClickListener,
         mContext: Context,
         list: ArrayList<DataResponse>
     ) {
-        val dataItem = list.get(position)
+        val dataItem = list[position]
         dataItem.imageUrlsThumbnails?.get(0)?.let { mContext.loadImage(it, binding.ivBanner) }
         binding.tvPrice.text = dataItem.price ?: ""
         binding.tvTitle.text = dataItem.name?.capitalizeWords() ?: ""
@@ -89,7 +88,7 @@ private class ListViewHolder(
             ApplicationClass.languageJson?.listingScreen?.priceTitle ?: ""
         binding.tvDataTitle.text = ApplicationClass.languageJson?.listingScreen?.dateTitle ?: ""
         dataItem.createdAt?.let {
-            binding.tvDate.text = mContext.parseDate(it)
+            binding.tvDate.text = parseDate(it)
         }
 
         itemView.setOnClickListener {

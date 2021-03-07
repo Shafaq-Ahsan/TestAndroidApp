@@ -13,7 +13,7 @@ import com.app.coderByte.interfaces.InitMethods
 internal abstract class BaseDialogFragment : DialogFragment(), InitMethods {
 
 
-    protected lateinit var className: String
+    private lateinit var className: String
     protected lateinit var binding: ViewDataBinding
 
 
@@ -35,6 +35,7 @@ internal abstract class BaseDialogFragment : DialogFragment(), InitMethods {
             container,
             false
         )
+
         return binding.root
     }
 

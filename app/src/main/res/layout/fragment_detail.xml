@@ -2,6 +2,23 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import
+            alias="ExtensionFunctions"
+            type="com.app.coderByte.utils.ExtensionFunctionsKt" />
+
+        <variable
+            name="priceTitle"
+            type="String" />
+
+        <variable
+            name="dateTitle"
+            type="String" />
+
+        <variable
+            name="dataResponse"
+            type="com.app.network_module.models.response.DataResponse" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,8 +38,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:paddingEnd="@dimen/ten_dp"
             android:paddingStart="@dimen/ten_dp"
+            android:paddingEnd="@dimen/ten_dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +48,7 @@
                 android:id="@+id/nav_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-             android:padding="@dimen/fourteen_dp"
+                android:padding="@dimen/fourteen_dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,6 +66,7 @@
             android:layout_marginStart="@dimen/twenty_four_dp"
             android:layout_marginTop="@dimen/twenty_four_dp"
             android:layout_marginEnd="@dimen/twenty_four_dp"
+            android:text="@{ExtensionFunctions.capitalizeWords(dataResponse.name)}"
             android:textAlignment="viewStart"
             android:textColor="@color/dark_indigo"
             android:textSize="@dimen/twenty_three_sp"
@@ -64,6 +82,7 @@
             android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ten_dp"
+            android:text="@{dataResponse.price}"
             android:textAlignment="viewStart"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/eighteen_sp"
@@ -80,6 +99,7 @@
             android:layout_marginTop="@dimen/two_dp"
             android:layout_marginBottom="@dimen/eight_dp"
             android:fontFamily="@font/helvetica_neue_lts_td_light"
+            android:text="@{priceTitle}"
             android:textColor="@color/dark_indigo"
             android:textSize="@dimen/sixteen_sp"
             app:layout_constraintEnd_toEndOf="@+id/tvPrice"
@@ -93,6 +113,7 @@
             android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ten_dp"
+            android:text="@{ExtensionFunctions.parseDate(dataResponse.createdAt)}"
             android:textColor="@color/dark_indigo"
             android:textDirection="locale"
             android:textSize="@dimen/seventeen_sp"
@@ -110,6 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/two_dp"
             android:layout_marginBottom="@dimen/twenty_four_dp"
+            android:text="@{dateTitle}"
             android:textColor="@color/dark_indigo"
             android:textSize="@dimen/sixteen_sp"
             app:layout_constraintEnd_toEndOf="@+id/tvDate"

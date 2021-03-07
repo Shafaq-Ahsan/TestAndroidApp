@@ -1,4 +1,4 @@
-package com.app.coderByte.fragments
+package com.app.coderByte.dialogs
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -7,8 +7,6 @@ import android.view.WindowManager
 import androidx.lifecycle.ViewModelProviders
 import com.app.coderByte.R
 import com.app.coderByte.databinding.FragmentLoaderBinding
-import com.app.coderByte.dialogs.BaseDialogFragment
-import com.app.coderByte.utils.loadImage
 import com.app.coderByte.viewmodels.MainActivityViewModel
 
 

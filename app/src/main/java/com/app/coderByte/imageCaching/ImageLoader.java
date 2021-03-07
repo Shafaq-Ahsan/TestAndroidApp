@@ -31,6 +31,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static com.app.coderByte.utils.ExtensionFunctionsKt.decodeSampledBitmapFromFileDescriptor;
+
 public class ImageLoader {
 
     private static final long DISK_CACHE_SIZE = 1024 * 1024 * 50; //50MB
@@ -41,19 +43,15 @@ public class ImageLoader {
 
     private static final int TAG_KEY_URI =R.id.TAG_URI; // Tags to prevent misplacement of pictures
 
-    private LruCache<String, Bitmap> mMemoryCache;
+    private final LruCache<String, Bitmap> mMemoryCache;
 
     private DiskLruCache mDiskLruCache;
 
     private boolean mIsDiskLruCacheCreated = false; // Are there any disks used
 
-    private ImageCompress imageCompress = new ImageCompress();
-
-    private Context mContext;
-
     private static ImageLoader mImageLoader;
 
-    private Handler mMainHandler = new Handler(Looper.getMainLooper()) {
+    private final Handler mMainHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             LoaderResult result = (LoaderResult) msg.obj;
@@ -73,7 +71,7 @@ public class ImageLoader {
     }
 
     private ImageLoader(Context context) {
-        mContext = context.getApplicationContext();
+        Context mContext = context.getApplicationContext();
         int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         int cacheSize = maxMemory / 8;
         mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
@@ -212,7 +210,7 @@ public class ImageLoader {
         if (snapshot != null) {
             FileInputStream fileInputStream = (FileInputStream) snapshot.getInputStream(DISK_CACHE_INDEX);
             FileDescriptor fileDescriptor = fileInputStream.getFD();
-            bitmap = imageCompress.decodeSampledBitmapFromFileDescriptor(fileDescriptor, reqWidth, reqHeight);
+            bitmap = decodeSampledBitmapFromFileDescriptor(fileDescriptor, reqWidth, reqHeight);
             if (bitmap != null) {
                 addBitmapToMemoryCache(key, bitmap);
             }

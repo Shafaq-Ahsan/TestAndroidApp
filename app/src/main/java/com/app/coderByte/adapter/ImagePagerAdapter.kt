@@ -2,7 +2,6 @@ package com.app.coderByte.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
@@ -30,10 +29,8 @@ internal class ImagePagerAdapter(
         when (holder) {
             is ViewHolder -> {
                 holder.bind(mContext, mPagerList, position)
-
             }
         }
-
     }
 
     override fun getItemCount(): Int {

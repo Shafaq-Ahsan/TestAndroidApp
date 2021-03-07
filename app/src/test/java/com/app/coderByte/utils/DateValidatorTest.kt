@@ -1,48 +1,51 @@
-package com.app.coderByte
+package com.app.coderByte.utils
 
-import androidx.test.platform.app.InstrumentationRegistry
-import com.app.coderByte.utils.parseDate
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
+
 import java.util.stream.Stream
 
 public class DateValidatorTest {
+
+
     @ParameterizedTest(name = "#{index} - Run test with date = {0}")
     @MethodSource("validDateProvider")
     fun test_date_java_api_valid(date: String?) {
-        assertTrue(InstrumentationRegistry.getInstrumentation().targetContext.parseDate(date).isNotEmpty())
+        assertTrue(parseDate(date).isNotEmpty())
     }
 
     @ParameterizedTest(name = "#{index} - Run test with date = {0}")
     @MethodSource("invalidDateProvider")
     fun test_date_java_api_invalid(date: String?) {
-        assertFalse(InstrumentationRegistry.getInstrumentation().targetContext.parseDate(date).isNullOrEmpty())
+        assertFalse(parseDate(date).isNotEmpty())
     }
 
     companion object {
         @JvmStatic
         fun validDateProvider(): Stream<String> {
             return Stream.of(
-                "1998-09-30",
-                "1998-9-30",
-                "2020-09-1",
-                "2020-09-01",
-                "2020-9-1",
-                "2020-9-01",
-                "2020-2-29",  // leap year
-                "2020-2-28",  // leap year
-                "2019-2-28",  // common year
-                "2000-02-29",  // 2000 is a leap year, % 400 == 0
-                "1900-02-28",  // 1900 is a common year
-                "2020-07-31",
-                "2020-08-31",
-                "2020-06-30",
-                "1900-01-01",
-                "2099-12-31"
+                "2019-02-23 07:56:26.686128",
+                "1998-09-30 12:01:00.00567",
+                "1998-9-30 12:01:00.00567",
+                "2020-09-1 12:01:00.00567",
+                "2020-09-01 12:01:00.00567",
+                "2020-9-1 12:01:00.00567",
+                "2020-9-01 12:01:00.00567",
+                "2020-2-29 12:01:00.00567",  // leap year
+                "2020-2-28 12:01:00.00567",  // leap year
+                "2019-2-28 12:01:00.00567",  // common year
+                "2000-02-29 12:01:00.00567",  // 2000 is a leap year, % 400 == 0
+                "1900-02-28 12:01:00.00567",  // 1900 is a common year
+                "2020-07-31 12:01:00.00567",
+                "2020-08-31 12:01:00.00567",
+                "2020-06-30 12:01:00.00567",
+                "1900-01-01 12:01:00.00567",
+                "2099-12-31 12:01:00.00567"
             )
         }
+
         @JvmStatic
         fun invalidDateProvider(): Stream<String> {
             return Stream.of(
@@ -61,8 +64,8 @@ public class DateValidatorTest {
                 "1900-02-29",  // 1900 is a common year, feb max 28
                 "12012-04-05",  // support only 4 digits years
                 " ",  // empty
-                ""
-            ) // empty
+                ""// empty
+            )
         }
     }
 }

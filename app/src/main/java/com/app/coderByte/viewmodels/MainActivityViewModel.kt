@@ -9,7 +9,7 @@ import com.app.network_module.repository.onError
 import com.app.network_module.repository.onSuccess
 import kotlinx.coroutines.launch
 
-internal class MainActivityViewModel : BaseViewModel() {
+class MainActivityViewModel : BaseViewModel() {
 
     private var _responseData = MutableLiveData<ArrayList<DataResponse>>()
     val responseData: LiveData<ArrayList<DataResponse>>
@@ -18,7 +18,6 @@ internal class MainActivityViewModel : BaseViewModel() {
     /*API SECTION*/
 
     fun getData() {
-
         coroutineScope.launch {
             toggleLoader(true)
             val data = ApiRepository.callGetData()

@@ -7,13 +7,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.app.coderByte.R
 import com.app.coderByte.databinding.FragmentSplashBinding
+import com.app.coderByte.utils.Constants.SPLASH_TIME_OUT
 import com.app.coderByte.viewmodels.MainActivityViewModel
 
 internal class SplashFragment : BaseFragment() {
 
     private lateinit var mBinding: FragmentSplashBinding
     private lateinit var mViewModel: MainActivityViewModel
-    private val SPLASH_TIME_OUT = 1000L
 
 
     override fun getFragmentLayout() = R.layout.fragment_splash
@@ -32,7 +32,6 @@ internal class SplashFragment : BaseFragment() {
     }
 
     private fun navigateAhead() {
-
         findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
     }
 

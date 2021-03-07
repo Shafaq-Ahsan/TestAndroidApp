@@ -13,20 +13,7 @@ buildscript {
         version_perference = "1.1.1"
         version_navigation = "2.3.0"
         version_lifecycle_extensions = "2.1.0"
-        version_coil = "0.9.5"
-        version_coil_gif = "1.0.0-rc3"
-        version_glide = "4.10.0"
-        version_material_io = "1.2.0-alpha06"
-        version_map = "17.0.0"
-        version_dexter = "6.0.1"
-        version_play_services_location = "17.0.0"
-        multipickerversion = '0.2.4'
-        version_touch_imageview = '3.0.1'
-        version_pusher_channel = "2.0.2"
-        version_vector_child_finder = "1.0.0"
         version_shimmer = '0.5.0'
-        version_badge = '1.0.5'
-        exoplayer_version = '2.13.0'
     }
     repositories {
         google()

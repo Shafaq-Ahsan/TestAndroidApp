@@ -11,7 +11,7 @@ import com.app.coderByte.R
 import com.app.coderByte.databinding.NotificationDialogBinding
 
 
-internal object DisplayNotification {
+object DisplayNotification {
 
 
     private const val NOTIFICATION_TIMER = 1000L
@@ -19,22 +19,16 @@ internal object DisplayNotification {
     private lateinit var mTimer: CountDownTimer
 
     enum class STYLE {
-
         INFO,
         SUCCESS,
         FAILURE,
         GENERAL
-
     }
 
     private fun setStyle(style: STYLE, binding: NotificationDialogBinding, message: String) {
-
-
         binding.apply {
             txtViewNotificationMessage.text = message
-
             when (style) {
-
                 STYLE.FAILURE -> {
                     txtViewNotificationTitle.visibility = View.GONE
                     cardViewNotification.setCardBackgroundColor(Color.parseColor("#fe8083"))
@@ -62,8 +56,6 @@ internal object DisplayNotification {
                 }
 
             }
-
-
             executePendingBindings()
         }
 
@@ -71,8 +63,6 @@ internal object DisplayNotification {
 
 
     fun show(cxt: Context, binding: NotificationDialogBinding, style: STYLE, message: String) {
-
-
         if (binding.root.isVisible && binding.txtViewNotificationMessage.text.toString() == message) {
             mTimer.apply {
                 cancel()
@@ -85,19 +75,13 @@ internal object DisplayNotification {
                 start()
             }
         }
-
-
         val animationEnter = AnimationUtils.loadAnimation(cxt, R.anim.notification_dialog_enter)
         val animationExit = AnimationUtils.loadAnimation(cxt, R.anim.notification_dialog_exit)
-
         setStyle(style, binding, message)
-
 
         if (!binding.root.isVisible) {
             binding.root.startAnimation(animationEnter)
         }
-
-
         animationEnter.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationRepeat(animation: Animation?) {
             }
@@ -116,18 +100,11 @@ internal object DisplayNotification {
                         }
 
                     }
-
                     mTimer.start()
-
-
-//                    Handler().postDelayed({
-//                        startAnimation(animationExit)
-//                    }, NOTIFICATION_TIMER)
                 }
             }
 
             override fun onAnimationStart(animation: Animation?) {
-//                binding.root.visibility = View.VISIBLE
             }
 
         })

@@ -1,7 +1,6 @@
 package com.app.coderByte.fragments
 
 
-import android.os.Handler
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProviders
@@ -14,7 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.coderByte.adapter.DataAdapter
 import com.app.coderByte.interfaces.ListClickListener
@@ -71,7 +69,6 @@ internal class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListen
 
     override fun setListeners() {
         mBinding.refresh.setOnRefreshListener(this)
-
     }
 
     private fun setupRecyclerView() {
@@ -98,13 +95,12 @@ internal class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListen
     }
 
     override fun onItemClick(position: Int) {
-        dataList.get(position).name?.let { requireContext().Toast(it) }
+        dataList[position].name?.let { requireContext().Toast(it) }
         val bundle = bundleOf(
             Enums.Ids.POSITION.key to position
         )
         findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
     }
-
 
 }
 

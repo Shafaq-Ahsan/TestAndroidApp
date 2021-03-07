@@ -1,8 +1,6 @@
 package com.app.coderByte
 
 import android.app.Application
-import android.graphics.Bitmap
-import android.util.LruCache
 import com.app.coderByte.models.language.LanguageJson
 import com.app.coderByte.utils.*
 import com.app.network_module.NetworkModule
@@ -19,7 +17,6 @@ internal class ApplicationClass : Application() {
         mApplicationClass = this
         setUpLanguageJson()
         NetworkModule.initialize(this.applicationContext)
-
     }
 
     companion object {

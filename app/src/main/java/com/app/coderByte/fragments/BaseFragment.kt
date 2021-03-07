@@ -12,7 +12,7 @@ import com.app.coderByte.interfaces.InitMethods
 internal abstract class BaseFragment : Fragment(), InitMethods {
 
 
-    protected lateinit var className: String
+    private lateinit var className: String
     protected lateinit var binding: ViewDataBinding
 
 
