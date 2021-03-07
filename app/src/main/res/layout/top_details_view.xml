@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager_images"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@drawable/placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/images_pager_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/sixteen_dp"
+            android:visibility="gone"
+            android:background="@drawable/rounded_button_dark_grey"
+            style="@style/romanFontStyle"
+            android:lineSpacingExtra="@dimen/two_sp"
+            android:paddingStart="@dimen/twelve_dp"
+            android:paddingTop="@dimen/eight_dp"
+            android:paddingEnd="@dimen/ten_dp"
+            android:paddingBottom="@dimen/five_dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/thirteen_sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@+id/tabDots"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="See All 1/8" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabDots"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/forty_dp"
+            android:layout_marginEnd="@dimen/forty_dp"
+            android:layout_marginBottom="@dimen/five_dp"
+            app:layout_constraintBottom_toBottomOf="@id/viewpager_images"
+            app:layout_constraintEnd_toEndOf="@id/viewpager_images"
+            app:layout_constraintStart_toStartOf="@id/viewpager_images"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabMode="scrollable"
+            app:tabGravity="center"
+            app:tabMaxWidth="@dimen/twenty_dp"
+            app:tabIndicatorHeight="@dimen/zero_dp"
+            app:tabRippleColor="@android:color/transparent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

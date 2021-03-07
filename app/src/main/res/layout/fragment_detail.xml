@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/car_details_top"
+            layout="@layout/top_details_view"
+            app:layout_collapseMode="parallax"
+            app:layout_collapseParallaxMultiplier="0.9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:paddingEnd="@dimen/ten_dp"
+            android:paddingStart="@dimen/ten_dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/nav_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+             android:padding="@dimen/fourteen_dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/svg_back_black"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/boldFontStyle"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty_four_dp"
+            android:layout_marginTop="@dimen/twenty_four_dp"
+            android:layout_marginEnd="@dimen/twenty_four_dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/dark_indigo"
+            android:textSize="@dimen/twenty_three_sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_details_top"
+            tools:text="Heading " />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            style="@style/boldFontStyle"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/eighteen_sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="80,000 SR " />
+
+        <TextView
+            android:id="@+id/tvPriceTitle"
+            style="@style/romanFontStyle"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/two_dp"
+            android:layout_marginBottom="@dimen/eight_dp"
+            android:fontFamily="@font/helvetica_neue_lts_td_light"
+            android:textColor="@color/dark_indigo"
+            android:textSize="@dimen/sixteen_sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvPrice"
+            app:layout_constraintStart_toStartOf="@+id/tvPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+            tools:text="Price From" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            style="@style/romanFontStyle"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:textColor="@color/dark_indigo"
+            android:textDirection="locale"
+            android:textSize="@dimen/seventeen_sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvPriceTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvPriceTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvPriceTitle"
+            tools:text="14/01/2021"
+
+            />
+
+        <TextView
+            android:id="@+id/tvDataTitle"
+            style="@style/lightFontStyle"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/two_dp"
+            android:layout_marginBottom="@dimen/twenty_four_dp"
+            android:textColor="@color/dark_indigo"
+            android:textSize="@dimen/sixteen_sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvDate"
+            app:layout_constraintStart_toStartOf="@+id/tvDate"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
+            tools:text="created at" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

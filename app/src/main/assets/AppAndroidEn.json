@@ -1,0 +1,14 @@
+{
+  "messages": {
+    "error_messages": {
+      "internet": "Check your internet and Try again.",
+      "internal": "Some Internal Error Has Occurred.",
+      "file_format": "This file format not supported.",
+      "no_result": "No Result Found"
+    }
+  },
+  "listing_screen": {
+    "price_title": "Price From",
+    "date_title": "Created at"
+  }
+}

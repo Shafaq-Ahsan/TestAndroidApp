@@ -1,0 +1,92 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    flavorDimensions "server"
+
+    productFlavors {
+        dev {
+            versionName "1.0"
+            dimension "server"
+            buildConfigField 'String', 'BASE_URL', '"https://ey3f2y0nre.execute-api.us-east-1.amazonaws.com/"'
+        }
+        stage {
+            versionName "1.0"
+            dimension "server"
+            buildConfigField 'String', 'BASE_URL', '"https://ey3f2y0nre.execute-api.us-east-1.amazonaws.com/"'
+
+        }
+        live {
+            versionName "1.0"
+            dimension "server"
+            buildConfigField 'String', 'BASE_URL', '"https://ey3f2y0nre.execute-api.us-east-1.amazonaws.com/"'
+
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+
+    // Preference
+    implementation "androidx.preference:preference:$version_perference"
+
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutine"
+
+    //Gson
+    implementation "com.google.code.gson:gson:$version_gson"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+
+    //moshi
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    //OK HTTP
+    implementation "com.squareup.okhttp3:logging-interceptor:$version_ok_http"
+    implementation "com.squareup.okhttp3:okhttp:$version_ok_http"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //CHUCK
+    debugImplementation "com.readystatesoftware.chuck:library:$version_chuck"
+    releaseImplementation "com.readystatesoftware.chuck:library-no-op:$version_chuck"
+
+
+    //two way rangeseekbar
+    api 'com.crystal:crystalrangeseekbar:1.0.0'
+
+
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}

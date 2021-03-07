@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_gravity="center_horizontal"
+        app:cardBackgroundColor="@android:color/black"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="@dimen/ten_dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fifteen_dp"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:layoutDirection="locale">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_view_notification_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_check_white_24dp" />
+
+            <TextView
+                android:id="@+id/txt_view_notification_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sixteen_dp"
+                android:layout_toEndOf="@+id/img_view_notification_icon"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:paddingTop="@dimen/eight_dp"
+                android:textColor="@color/black"
+                android:textDirection="locale"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="TESTING" />
+
+            <TextView
+                android:id="@+id/txt_view_notification_message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/txt_view_notification_title"
+                android:layout_marginStart="@dimen/sixteen_dp"
+                android:layout_toEndOf="@+id/img_view_notification_icon"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="5"
+                android:textColor="@color/white"
+                android:textDirection="locale"
+                tools:text="TESTING" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
+

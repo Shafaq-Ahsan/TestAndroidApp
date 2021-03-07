@@ -1,0 +1,46 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="statusBarBackground">@color/splash_bg_color</item>
+        <item name="android:windowBackground">@color/splash_bg_color</item>
+        <item name="android:textCursorDrawable">@drawable/color_cursor</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+    </style>
+    <style name="progressTheme" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/background_white_card</item>
+    </style>
+
+    <style name="boldFontStyle">
+        <item name="fontFamily">@font/helvetica_neue_ltstd_bold</item>
+    </style>
+
+    <style name="italicFontStyle">
+        <item name="fontFamily">@font/helvetica_neue_italic</item>
+    </style>
+
+    <style name="romanFontStyle">
+        <item name="fontFamily">@font/helvetica_neue_ltstd_roman</item>
+    </style>
+
+    <style name="mediumFontStyle">
+        <item name="fontFamily">@font/helvetica_neue_lts_td_medium</item>
+    </style>
+
+    <style name="lightFontStyle">
+        <item name="fontFamily">@font/helvetica_neue_lts_td_light</item>
+    </style>
+</resources>
