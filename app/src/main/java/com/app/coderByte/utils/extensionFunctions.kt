@@ -34,13 +34,13 @@ fun Context.loadImage(url: String, imageView: ImageView, placeholder: String = "
 fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
 
 fun parseDate(date: String?): String {
-    var newDateData = date
+    var newDateData = ""
     date?.let {
         try {
             var spf = SimpleDateFormat("yyyy-mm-dd HH:mm:ss.SSSSSS") // server
-            val newDate = spf.parse(date)
+            val newDate = spf.parse(it)
             spf = SimpleDateFormat("MMM dd, yyyy hh:mm a") // convert formate
-            newDateData = spf.format(newDate)
+            newDate?.let { newDateData = spf.format(it) }
             return newDateData.toString()
         } catch (e: Exception) {
             return ""
@@ -54,6 +54,7 @@ fun Context.loadJSONFromAssets(fileName: String): String {
         reader.readText()
     }
 }
+
 fun decodeSampledBitmapFromResource(
     res: Resources?,
     resId: Int,

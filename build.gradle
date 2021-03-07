@@ -14,6 +14,20 @@ buildscript {
         version_navigation = "2.3.0"
         version_lifecycle_extensions = "2.1.0"
         version_shimmer = '0.5.0'
+        kotlin_core='1.3.2'
+        version_constraint = '2.0.4'
+        appcompact_version ='1.2.0'
+        viewmodel_core='2.2.0'
+        support_version ='1.0.0'
+        viewPagger2_version ='1.0.0'
+        support_design ='26.1.0'
+        lruCashe_version ='2.0.2'
+        junit='4.13'
+        mokito_core ='2.28.2'
+        test_core ='1.3.0'
+        jupiter_version ='5.6.2'
+        esperesso_version='3.3.0'
+        core_version='1.1.1'
     }
     repositories {
         google()

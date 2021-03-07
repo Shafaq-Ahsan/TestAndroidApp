@@ -4,12 +4,12 @@ import java.text.SimpleDateFormat
 
 class DataParser  {
     fun parseDate(date: String?): String {
-        var newDateData = date
+        var newDateData = ""
         try {
             var spf = SimpleDateFormat("yyyy-mm-dd HH:mm:ss.SSSSSS") // server
-            val newDate = spf.parse(date)
+            val newDate = date?.let{spf.parse(it)}
             spf = SimpleDateFormat("MMM dd, yyyy hh:mm a") // convert formate
-            newDateData = spf.format(newDate)
+            newDate?.let { newDateData = spf.format(it) }
             return newDateData
         } catch (e: Exception) {
         }

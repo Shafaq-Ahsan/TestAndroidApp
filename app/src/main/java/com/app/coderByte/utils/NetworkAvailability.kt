@@ -33,7 +33,7 @@ internal class NetworkAvailability private constructor() {
                 context.sendBroadcast(getNetworkAvailabilityIntent(false))
             }
         }
-        connectivityManager?.registerNetworkCallback(builder.build(), networkCallback)
+        networkCallback?.let { connectivityManager?.registerNetworkCallback(builder.build(), it) }
         if (isAvailable(context)) {
             context.sendBroadcast(getNetworkAvailabilityIntent(true))
         } else {
@@ -45,7 +45,7 @@ internal class NetworkAvailability private constructor() {
         context: Context,
         networkAvailabilityReceiver: BroadcastReceiver?
     ) {
-        connectivityManager?.unregisterNetworkCallback(networkCallback)
+        networkCallback?.let { connectivityManager?.unregisterNetworkCallback(it) }
         context.unregisterReceiver(networkAvailabilityReceiver)
     }
 

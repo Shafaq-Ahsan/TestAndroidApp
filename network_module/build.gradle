@@ -81,9 +81,6 @@ dependencies {
     releaseImplementation "com.readystatesoftware.chuck:library-no-op:$version_chuck"
 
 
-    //two way rangeseekbar
-    api 'com.crystal:crystalrangeseekbar:1.0.0'
-
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
