@@ -9,10 +9,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import com.app.coderByte.interfaces.InitMethods
 
+// base dialog fragment
 internal abstract class BaseDialogFragment : DialogFragment(), InitMethods {
 
-
+    //class name variable
     private lateinit var className: String
+
+    //    data binding variable
     protected lateinit var binding: ViewDataBinding
 
 

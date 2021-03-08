@@ -2,6 +2,7 @@ package com.app.coderByte.interfaces
 
 import android.view.View
 
+//An interface for fragments and activities
 internal interface InitMethods : View.OnClickListener {
 
     fun getFragmentLayout(): Int

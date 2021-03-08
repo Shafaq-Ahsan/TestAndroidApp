@@ -10,7 +10,7 @@ import com.app.coderByte.databinding.FragmentLoaderBinding
 import com.app.coderByte.interfaces.InitMethods
 import com.app.coderByte.viewmodels.MainActivityViewModel
 
-
+// loader fragment
 internal class LoaderFragment : BaseDialogFragment()  {
 
     private lateinit var mBinding: FragmentLoaderBinding

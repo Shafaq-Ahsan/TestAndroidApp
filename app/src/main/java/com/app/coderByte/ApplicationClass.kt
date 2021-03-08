@@ -9,14 +9,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
+//application class
 internal class ApplicationClass : Application() {
 
     override fun onCreate() {
         super.onCreate()
         mApplicationClass = this
-        setUpLanguageJson()
-        NetworkModule.initialize(this.applicationContext)
+        setUpLanguageJson() // local string
+        NetworkModule.initialize(this.applicationContext) // network module initialize for api calls
     }
 
     companion object {
@@ -35,9 +35,9 @@ internal class ApplicationClass : Application() {
         fun setUpLanguageJson() {
             CoroutineScope(Dispatchers.IO).launch {
                 languageJson = Gson().fromJson(
-                    application.loadJSONFromAssets("AppAndroidEn.json"),
+                    application.loadJSONFromAssets("AppAndroidEn.json"), // load json and convert it in string
                     LanguageJson::class.java
-                )
+                ) // gson convert string to object
             }
         }
     }

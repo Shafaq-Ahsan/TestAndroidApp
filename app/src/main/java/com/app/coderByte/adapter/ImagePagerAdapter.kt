@@ -9,12 +9,12 @@ import com.app.coderByte.databinding.ItemBannerImagesBinding
 import com.app.coderByte.utils.loadImage
 import com.app.network_module.models.response.DataResponse
 
-
+// detail screen Image pager
 internal class ImagePagerAdapter(
     private val mContext: Context
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-
+    // data to show images
     private var mPagerList: DataResponse? = null
 
     //set list
@@ -41,6 +41,7 @@ internal class ImagePagerAdapter(
 
 }
 
+//Images view holder
 class ViewHolder(private val binding: ItemBannerImagesBinding) :
     RecyclerView.ViewHolder(binding.root) {
     companion object {
@@ -51,16 +52,17 @@ class ViewHolder(private val binding: ItemBannerImagesBinding) :
         }
     }
 
+    // to set views data
     fun bind(context: Context, data: DataResponse?, position: Int) {
         binding.apply {
             val imageView = binding.image as ImageView
             if (data?.imageUrlsThumbnails?.size ?: 0 > 0) {
-//               to load images from disk cashe : if placeholder is in cashe it will show placeholder and in background tries to download original image
+                // to load images from disk cashe : if placeholder is in cashe it will show placeholder and in background tries to download original image
                 context.loadImage(
                     data?.imageUrls?.get(position) ?: "",
                     imageView,
                     data?.imageUrlsThumbnails?.get(0) ?: ""
-                )// extension funtion to show images
+                )// extension function to show images
             } else {
                 context.loadImage(
                     data?.imageUrls?.get(position) ?: "",

@@ -14,7 +14,7 @@ import com.app.coderByte.utils.capitalizeWords
 import com.app.coderByte.utils.loadImage
 import com.app.coderByte.utils.parseDate
 
-
+// home screen Adapter
 internal class DataAdapter(
     private val mContext: Context,
     private var list: ArrayList<DataResponse>,
@@ -38,6 +38,7 @@ internal class DataAdapter(
         }
     }
 
+    // get viewType method
     override fun getItemViewType(position: Int): Int {
         return when (list.size <= 0) {
             true -> SHIMMER

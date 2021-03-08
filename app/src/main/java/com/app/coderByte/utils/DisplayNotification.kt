@@ -10,11 +10,10 @@ import androidx.core.view.isVisible
 import com.app.coderByte.R
 import com.app.coderByte.databinding.NotificationDialogBinding
 
-
+//notification view to show and hide
 object DisplayNotification {
 
-
-    private const val NOTIFICATION_TIMER = 1000L
+    private const val NOTIFICATION_TIMER = 1000L //time to show top drop sown view after that hide that view
 
     private lateinit var mTimer: CountDownTimer
 
@@ -50,7 +49,7 @@ object DisplayNotification {
 
                 STYLE.GENERAL -> {
                     txtViewNotificationTitle.visibility = View.GONE
-                    txtViewNotificationMessage.setTextColor(Color.parseColor("#000000"));
+                    txtViewNotificationMessage.setTextColor(Color.parseColor("#000000"))
                     cardViewNotification.setCardBackgroundColor(Color.parseColor("#137BDE"))
                     imgViewNotificationIcon.setImageResource(R.drawable.ic_baseline_report_problem_24)
                 }

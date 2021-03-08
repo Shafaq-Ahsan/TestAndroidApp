@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.app.coderByte.interfaces.InitMethods
-
+//base fragment extended by other fragments
 internal abstract class BaseFragment : Fragment(), InitMethods {
 
 

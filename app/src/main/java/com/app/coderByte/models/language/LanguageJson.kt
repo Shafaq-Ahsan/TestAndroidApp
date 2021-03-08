@@ -2,6 +2,7 @@ package com.app.coderByte.models.language
 
 import com.google.gson.annotations.SerializedName
 
+//local string parsing
 data class LanguageJson(
 
     @field:SerializedName("messages")

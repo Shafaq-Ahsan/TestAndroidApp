@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
 import java.io.FileDescriptor
 import java.text.SimpleDateFormat
 import java.util.*
-
+//extension method for toast
 fun Context.Toast(msg: String) {
     GlobalScope.launch {
         withContext(Dispatchers.Main) {
@@ -107,11 +107,6 @@ fun decodeSampledBitmapFromFileDescriptor(
 
 /**
  * Get the sample rate and zoom ratio of the picture
- *
- * @param options
- * @param reqWidth
- * @param reqHeight
- * @return
  */
 fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
     var inSampleSize = 1

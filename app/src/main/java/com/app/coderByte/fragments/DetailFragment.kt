@@ -17,10 +17,10 @@ import kotlin.collections.ArrayList
 internal class DetailFragment : BaseFragment() {
 
     private var position: Int? = 0 // position from arguments to show detail item
-    private lateinit var mBinding: FragmentDetailBinding
-    private lateinit var mViewModel: MainActivityViewModel
-    private var dataList = ArrayList<DataResponse>()
-    private lateinit var imagesAdapter: ImagePagerAdapter
+    private lateinit var mBinding: FragmentDetailBinding // binding variable
+    private lateinit var mViewModel: MainActivityViewModel //viewmodel variable
+    private var dataList = ArrayList<DataResponse>() // data variable
+    private lateinit var imagesAdapter: ImagePagerAdapter //adapter variable
 
 
     override fun getFragmentLayout() = R.layout.fragment_detail
@@ -57,8 +57,8 @@ internal class DetailFragment : BaseFragment() {
     }
 
     override fun init() {
-        position = arguments?.getInt(Enums.Ids.POSITION.key) ?: 0
-        setImagesViewPager()
+        position = arguments?.getInt(Enums.Ids.POSITION.key) ?: 0 // from list fragment
+        setImagesViewPager() // set view pagger
     }
 
     override fun setListeners() {

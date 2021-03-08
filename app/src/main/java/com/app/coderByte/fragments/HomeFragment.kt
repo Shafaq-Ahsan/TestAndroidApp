@@ -20,14 +20,14 @@ import com.app.coderByte.utils.Enums
 import com.app.coderByte.utils.Toast
 import com.app.network_module.models.response.DataResponse
 
+//home fragment to show list of items
 internal class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener,
-    ListClickListener {
-
-    private lateinit var mBinding: FragmentHomeBinding
-    private lateinit var mViewModel: MainActivityViewModel
-    private lateinit var dataAdapter: DataAdapter
-    private var dataList = ArrayList<DataResponse>()
-    private lateinit var recyclerView: RecyclerView
+    ListClickListener { // list click interface
+    private lateinit var mBinding: FragmentHomeBinding // binding variable
+    private lateinit var mViewModel: MainActivityViewModel //viewmodel variabole
+    private lateinit var dataAdapter: DataAdapter //adapter variable
+    private var dataList = ArrayList<DataResponse>() //data
+    private lateinit var recyclerView: RecyclerView // recyclerview variable
 
 
     override fun getFragmentLayout() = R.layout.fragment_home
@@ -55,26 +55,29 @@ internal class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListen
         }
     }
 
+    // set data when call is updated
     private fun setData(it: ArrayList<DataResponse>) {
-        mBinding.refresh.isRefreshing = false
-        dataList = it
+        mBinding.refresh.isRefreshing = false // stop pull to refresh
+        dataList = it //set class data
 
     }
 
     override fun init() {
-        mBinding.lifecycleOwner = this
-        mBinding.viewModel= mViewModel
-        setupRecyclerView()
-        mViewModel.responseData.value ?: mViewModel.getData()
+        mBinding.lifecycleOwner = this // for binding
+        mBinding.viewModel = mViewModel // set binding variable
+        setupRecyclerView() // recycler view setup
+        mViewModel.responseData.value
+            ?: mViewModel.getData() // call api when there is no value in live data otherwise used that value
     }
 
     override fun setListeners() {
-        mBinding.refresh.setOnRefreshListener(this)
+        mBinding.refresh.setOnRefreshListener(this) //pull to refresh listner
     }
 
+    // recycler view setup
     private fun setupRecyclerView() {
-        dataAdapter = DataAdapter(requireContext(), dataList,this)
-        val manager = GridLayoutManager(context,2)
+        dataAdapter = DataAdapter(requireContext(), dataList, this)
+        val manager = GridLayoutManager(context, 2)
         recyclerView = mBinding.recyclerDataView.apply {
             layoutManager = manager
             adapter = dataAdapter
@@ -90,10 +93,12 @@ internal class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListen
 
     }
 
+    // SwipeRefreshLayout.OnRefreshListener overided method
     override fun onRefresh() {
         mViewModel.getData()
     }
 
+    // on list click method
     override fun onItemClick(position: Int) {
         dataList[position].name?.let { requireContext().Toast(it) }
         val bundle = bundleOf(

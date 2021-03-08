@@ -1,7 +1,7 @@
 package com.app.coderByte.utils
 
 import java.text.SimpleDateFormat
-
+//date parser class
 class DataParser  {
     fun parseDate(date: String?): String {
         var newDateData = ""

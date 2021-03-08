@@ -11,8 +11,8 @@ import retrofit2.http.Query
 
 object ApiRepository {
 
-    private val api = RetrofitBuilder.getRetrofitInstance(Enums.RetrofitBaseUrl.BASE_URL)
-
+    private val api = RetrofitBuilder.getRetrofitInstance(Enums.RetrofitBaseUrl.BASE_URL) // retrofit builder instance
+    // call api method
     suspend fun callGetData(): Result<Response<ResponseGeneralArray<DataResponse>>> {
         return try {
             Success(api.getData())

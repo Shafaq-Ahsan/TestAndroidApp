@@ -133,11 +133,6 @@ public class ImageLoader {
      * 2. The memory does not search for the bitmap from the disk
      * 3. If neither of the above is downloaded from the Internet, it is cached in disk and memory
      * 4. If there is no memory, the disk does not exist, or the cache memory is insufficient, it is directly pulled from the network
-     *
-     * @param url
-     * @param reqWidth
-     * @param reqHeight
-     * @return
      */
     private Bitmap loadBitmap(String url, int reqWidth, int reqHeight) {
         Bitmap bitmap = loadBitmapFromMemCache(url);// Memory read
@@ -192,12 +187,6 @@ public class ImageLoader {
 
     /**
      * Get cache from disk and store in memory
-     *
-     * @param url
-     * @param reqWidth
-     * @param reqHeight
-     * @return
-     * @throws IOException
      */
     private Bitmap loadBitmapFromDiskCache(String url, int reqWidth, int reqHeight) throws IOException {
         if (mDiskLruCache == null) {
@@ -216,7 +205,7 @@ public class ImageLoader {
             }
         }
 
-        /**
+        /*
          * The cache lookup of DiskLruCache is to obtain a Snapshot object through the Get () method of DiskLruCache,
          * Then get the cached file input stream through the Snapshot object, so that you can get the Bitmap
          */
@@ -226,8 +215,6 @@ public class ImageLoader {
 
     /**
      * The MD5 of the URL is generally used as the key to avoid illegal characters
-     *
-     * @param url
      */
     private String hashKeyFormUrl(String url) {
         String cacheKey;
@@ -243,8 +230,8 @@ public class ImageLoader {
 
     private String bytesToHexString(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < bytes.length; i++) {
-            String hex = Integer.toHexString(0xFF & bytes[i]);
+        for (byte aByte : bytes) {
+            String hex = Integer.toHexString(0xFF & aByte);
             if (hex.length() == 1) {
                 sb.append('0');
             }
@@ -255,9 +242,6 @@ public class ImageLoader {
 
     /**
      * Add to memory
-     *
-     * @param key
-     * @param bitmap
      */
     private void addBitmapToMemoryCache(String key, Bitmap bitmap) {
         if (getBitmapFromMemoryCache(key) == null) {
@@ -267,36 +251,14 @@ public class ImageLoader {
 
     /**
      * Get bitmap from memory
-     *
-     * @param key
-     * @return
      */
     private Bitmap getBitmapFromMemoryCache(String key) {
         return mMemoryCache.get(key);
     }
 
-    /**
-     * Get version number
-     *
-     * @param ctx
-     * @return
-     */
-    private int getAppVersion(Context ctx) {
-        PackageInfo info = null;
-        try {
-            info = ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), 0);
-            return info.versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return 1;
-    }
 
     /**
      * Get the size of free space
-     *
-     * @param path storage path
-     * @return
      */
     private long getUsableSpace(File path) {
         return path.getUsableSpace();
@@ -304,10 +266,6 @@ public class ImageLoader {
 
     /**
      * Get disk cache address
-     *
-     * @param ctx
-     * @param uniqueName unique name
-     * @return
      */
     private File getDiskCacheDir(Context ctx, String uniqueName) {
         boolean externalAvailable = (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)
@@ -326,10 +284,6 @@ public class ImageLoader {
 
     /**
      * Write cache
-     *
-     * @param urlPath
-     * @param outputStream
-     * @return
      */
     private boolean downloadUrlToSteam(String urlPath, OutputStream outputStream) {
         HttpURLConnection urlConnection = null;
@@ -367,9 +321,6 @@ public class ImageLoader {
 
     /**
      * Direct web download via url address
-     *
-     * @param urlPath
-     * @return
      */
     private Bitmap downloadBitmapFromUrl(String urlPath) {
         Bitmap bitmap = null;
@@ -383,7 +334,7 @@ public class ImageLoader {
                     IO_BUFFER_SIZE);
             bitmap = BitmapFactory.decodeStream(in);
         } catch (final IOException e) {
-
+            e.printStackTrace();
         } finally {
             if (urlConnection != null)
                 urlConnection.disconnect();

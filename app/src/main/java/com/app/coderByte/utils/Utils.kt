@@ -4,7 +4,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.app.coderByte.adapter.DataAdapter
 import com.app.network_module.models.response.DataResponse
-
+//binding adapter util class
 class Utils {
     companion object {
         @BindingAdapter("data")

@@ -21,14 +21,15 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
+//Retrofit
 internal object RetrofitBuilder {
 
     private val retrofitHashMap = HashMap<String, RetrofitAPI>()
 
+    // moshi for json parsing
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-
     fun getRetrofitInstance(url: Enums.RetrofitBaseUrl): RetrofitAPI {
 
         val baseUrl = url.baseUrl

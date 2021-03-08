@@ -8,7 +8,7 @@ import android.net.ConnectivityManager
 import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
 import android.net.NetworkRequest
-
+//internet state handling to notify user
 internal class NetworkAvailability private constructor() {
     private var connectivityManager: ConnectivityManager? = null
     private var networkCallback: NetworkCallback? = null

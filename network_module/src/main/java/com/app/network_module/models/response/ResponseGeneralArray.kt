@@ -3,7 +3,7 @@ package com.app.network_module.models.response
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-
+// model class
 @JsonClass(generateAdapter = true)
 data class ResponseGeneralArray<T>(
     @Json(name = "message")

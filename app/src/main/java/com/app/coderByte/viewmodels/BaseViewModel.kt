@@ -9,21 +9,33 @@ import com.app.coderByte.utils.DisplayNotification
 import kotlinx.coroutines.*
 import java.lang.Exception
 
-public open class BaseViewModel : ViewModel() {
+open class BaseViewModel : ViewModel() {
+    //mutable live data for loader
     private val _loader = MutableLiveData<Boolean>()
     val loader: LiveData<Boolean>
         get() = _loader
 
+    //mutable live data to show message from top
+    private val _notificationMessage = MutableLiveData<NotificationMessage>()
+    val notificationMessage: LiveData<NotificationMessage>
+        get() = _notificationMessage
+
+    // supervisor job variable
+    private val job = SupervisorJob()
+
     private fun setLoader(flag: Boolean) {
-        _loader.postValue( flag)
+        _loader.postValue(flag)
     }
 
-    private val job = SupervisorJob()
+
     private val coroutineExceptionHandler =
         CoroutineExceptionHandler { _, throwable ->
             throwable.printStackTrace()
         }
+
     protected val coroutineScope = CoroutineScope(job + Dispatchers.IO + coroutineExceptionHandler)
+
+    //method called from coroutine to show loader
     open suspend fun toggleLoader(flag: Boolean) {
         withContext(Dispatchers.Main) {
             if (_loader.value != flag) {
@@ -32,14 +44,12 @@ public open class BaseViewModel : ViewModel() {
         }
     }
 
-    private val _notificationMessage = MutableLiveData<NotificationMessage>()
-    val notificationMessage: LiveData<NotificationMessage>
-        get() = _notificationMessage
-
+    //set notification message
     fun setNotificationMessage(message: NotificationMessage) {
         _notificationMessage.value = message
     }
 
+    //call notification from coroutine
     fun callMessageNotification(
         msg: String,
         style: DisplayNotification.STYLE = DisplayNotification.STYLE.FAILURE
@@ -57,6 +67,7 @@ public open class BaseViewModel : ViewModel() {
 
     }
 
+    //handle error messages from api calls
     protected fun showErrorMessage(throwable: Throwable) {
         throwable.printStackTrace()
         callMessageNotification(
@@ -64,6 +75,7 @@ public open class BaseViewModel : ViewModel() {
         )
     }
 
+    //handle error messages from api calls
     protected fun handleServerError(error: String) {
         if (error.isNotEmpty()) {
             callMessageNotification(error)
@@ -74,6 +86,7 @@ public open class BaseViewModel : ViewModel() {
         }
     }
 
+    // clear job
     override fun onCleared() {
         job.cancel()
         super.onCleared()
