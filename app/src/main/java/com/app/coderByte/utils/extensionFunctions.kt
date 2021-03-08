@@ -2,11 +2,14 @@ package com.app.coderByte.utils
 
 import android.content.Context
 import android.content.res.Resources
+import android.content.res.Resources.NotFoundException
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.widget.ImageView
 import android.widget.Toast
 import com.app.coderByte.imageCaching.ImageLoader
+import com.app.coderByte.models.language.LanguageJson
+import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -71,6 +74,24 @@ fun decodeSampledBitmapFromResource(
     return BitmapFactory.decodeResource(res, resId, options)
 }
 
+
+@Throws(NotFoundException::class)
+fun getResId(variableName: String?, с: Class<*>): Int {
+    return try {
+        // lookup field in class
+        val field = с.getField(variableName!!)
+        // always set access when using reflections
+        // preventing IllegalAccessException
+        field.isAccessible = true
+        // we can use here also Field.get() and do a cast
+        // receiver reference is null as it's static field
+        field.getInt(null)
+    } catch (e: java.lang.Exception) {
+        // rethrow as not found ex
+        throw NotFoundException(e.message)
+    }
+}
+
 fun decodeSampledBitmapFromFileDescriptor(
     fd: FileDescriptor?,
     reqWidth: Int,
@@ -108,5 +129,6 @@ fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeig
     }
     return inSampleSize
 }
+
 
 

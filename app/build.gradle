@@ -118,20 +118,26 @@ dependencies {
     //testing Dependencies
     testImplementation "junit:junit:$junit"
     testImplementation "org.mockito:mockito-core:$mokito_core"
+    testImplementation 'org.robolectric:robolectric:4.2.1'
     testImplementation "androidx.test:core:$test_core"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$jupiter_version"
     testImplementation "org.junit.jupiter:junit-jupiter-engine:$jupiter_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlin_core"
+    testImplementation "android.arch.core:core-testing:$core_version"
+    implementation 'net.bytebuddy:byte-buddy:1.9.10'
 
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlin_core"
+    androidTestImplementation "android.arch.core:core-testing:$core_version"
+    androidTestImplementation "org.mockito:mockito-core:$mokito_core"
     androidTestImplementation "androidx.test.espresso:espresso-core:$esperesso_version"
     androidTestImplementation "androidx.test:runner:$test_core"
     androidTestImplementation "androidx.test:rules:$test_core"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$esperesso_version"
+    androidTestImplementation "org.mockito:mockito-android:3.8.0"
 
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlin_core"
-    testImplementation "android.arch.core:core-testing:$core_version"
 
 
 }

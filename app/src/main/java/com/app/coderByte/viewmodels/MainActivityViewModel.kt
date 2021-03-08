@@ -9,9 +9,9 @@ import com.app.network_module.repository.onError
 import com.app.network_module.repository.onSuccess
 import kotlinx.coroutines.launch
 
-class MainActivityViewModel : BaseViewModel() {
+public open class MainActivityViewModel : BaseViewModel() {
 
-    private var _responseData = MutableLiveData<ArrayList<DataResponse>>()
+    var _responseData = MutableLiveData<ArrayList<DataResponse>>()
     val responseData: LiveData<ArrayList<DataResponse>>
         get() = _responseData
 

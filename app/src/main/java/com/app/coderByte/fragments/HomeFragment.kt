@@ -58,11 +58,12 @@ internal class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListen
     private fun setData(it: ArrayList<DataResponse>) {
         mBinding.refresh.isRefreshing = false
         dataList = it
-        dataAdapter.setData(dataList)
 
     }
 
     override fun init() {
+        mBinding.lifecycleOwner = this
+        mBinding.viewModel= mViewModel
         setupRecyclerView()
         mViewModel.responseData.value ?: mViewModel.getData()
     }
@@ -72,9 +73,8 @@ internal class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListen
     }
 
     private fun setupRecyclerView() {
-        dataAdapter = DataAdapter(requireContext(), dataList, this)
+        dataAdapter = DataAdapter(requireContext(), dataList,this)
         val manager = GridLayoutManager(context,2)
-
         recyclerView = mBinding.recyclerDataView.apply {
             layoutManager = manager
             adapter = dataAdapter

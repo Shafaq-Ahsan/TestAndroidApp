@@ -9,13 +9,13 @@ import com.app.coderByte.utils.DisplayNotification
 import kotlinx.coroutines.*
 import java.lang.Exception
 
-open class BaseViewModel : ViewModel() {
+public open class BaseViewModel : ViewModel() {
     private val _loader = MutableLiveData<Boolean>()
     val loader: LiveData<Boolean>
         get() = _loader
 
     private fun setLoader(flag: Boolean) {
-        _loader.value = flag
+        _loader.postValue( flag)
     }
 
     private val job = SupervisorJob()

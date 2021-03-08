@@ -33,11 +33,10 @@ internal class ApplicationClass : Application() {
 
         fun setUpLanguageJson() {
             CoroutineScope(Dispatchers.IO).launch {
-                languageJson =
-                    Gson().fromJson(
-                        application.loadJSONFromAssets( "AppAndroidEn.json" ),
-                        LanguageJson::class.java
-                    )
+                languageJson = Gson().fromJson(
+                    application.loadJSONFromAssets("AppAndroidEn.json"),
+                    LanguageJson::class.java
+                )
             }
         }
     }

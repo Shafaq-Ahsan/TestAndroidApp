@@ -40,11 +40,15 @@ internal class SplashFragment : BaseFragment() {
     }
 
     override fun init() {
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         Handler().postDelayed({
             navigateAhead()
         }, SPLASH_TIME_OUT)
     }
-
     override fun setListeners() {
 
     }
