@@ -7,10 +7,11 @@ import android.view.WindowManager
 import androidx.lifecycle.ViewModelProviders
 import com.app.coderByte.R
 import com.app.coderByte.databinding.FragmentLoaderBinding
+import com.app.coderByte.interfaces.InitMethods
 import com.app.coderByte.viewmodels.MainActivityViewModel
 
 
-internal class LoaderFragment : BaseDialogFragment() {
+internal class LoaderFragment : BaseDialogFragment()  {
 
     private lateinit var mBinding: FragmentLoaderBinding
     private lateinit var mViewModel: MainActivityViewModel

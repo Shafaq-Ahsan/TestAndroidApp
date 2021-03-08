@@ -16,7 +16,7 @@ import kotlin.collections.ArrayList
 
 internal class DetailFragment : BaseFragment() {
 
-    private var position: Int? = 0
+    private var position: Int? = 0 // position from arguments to show detail item
     private lateinit var mBinding: FragmentDetailBinding
     private lateinit var mViewModel: MainActivityViewModel
     private var dataList = ArrayList<DataResponse>()
@@ -39,12 +39,14 @@ internal class DetailFragment : BaseFragment() {
 
 
     override fun setLiveDataValues() {
+        //set responsedata value from livedata
         mViewModel.responseData.value?.let {
             setData(it)
         }
     }
 
     private fun setData(it: ArrayList<DataResponse>) {
+        //set data to binding and adapter
         dataList = it
         val dataItem = position?.let { it1 -> dataList[it1] }
         mBinding.dataResponse = dataItem
@@ -60,11 +62,13 @@ internal class DetailFragment : BaseFragment() {
     }
 
     override fun setListeners() {
+        //back nav button listener
         mBinding.navIcon.setOnClickListener {
             findNavController().navigateUp()
         }
     }
 
+    // top detail pager if have multiple images
     private fun setImagesViewPager() {
         imagesAdapter = ImagePagerAdapter(requireContext())
         mBinding.carDetailsTop.viewpagerImages.adapter = imagesAdapter
@@ -81,7 +85,6 @@ internal class DetailFragment : BaseFragment() {
     }
 
     override fun onClick(v: View?) {
-
     }
 
 

@@ -41,15 +41,15 @@ internal abstract class BaseFragment : Fragment(), InitMethods {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewBinding()
+        getViewBinding() //interface method
 
-        init()
+        init() //interface method
 
-        setLanguageData()
+        setLanguageData() //interface method
 
-        setLiveDataValues()
+        setLiveDataValues() //interface method
 
-        setListeners()
+        setListeners() //interface method
 
     }
 

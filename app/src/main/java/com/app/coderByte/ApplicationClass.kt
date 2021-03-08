@@ -26,7 +26,8 @@ internal class ApplicationClass : Application() {
 
         @JvmStatic
         val application: ApplicationClass by lazy { mApplicationClass }
-
+        //no hard coded string
+        // todo:  upload the json file on server/firebase and download new string realtime even the app is on playstore
         @JvmStatic
         internal var languageJson: LanguageJson? = null
 

@@ -19,15 +19,23 @@ import com.app.coderByte.utils.NetworkAvailability
 import com.app.coderByte.viewmodels.MainActivityViewModel
 
 class MainActivity : BaseActivity() {
+    //main activity binding variable
     private lateinit var mBinding: ActivityMainBinding
+    //viewModel variable
     private lateinit var mViewModel: MainActivityViewModel
+    //nav controller
     private lateinit var mNavController: NavController
     private lateinit var mNavDestination: NavDestination
-    private var networkAvailability: NetworkAvailability? = null
+
+    //loader when observe is called
     private val loaderFragment by lazy { LoaderFragment() }
+
+    //for network state check
+    private var networkAvailability: NetworkAvailability? = null
     private val receiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false)) {
+                //to show message on top of screen
                 mViewModel.callMessageNotification(
                     ApplicationClass.languageJson?.messages?.errorMessages?.internet ?: "",
                     DisplayNotification.STYLE.FAILURE
@@ -39,6 +47,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+        //To register network availability broadcast listener
         networkAvailability = NetworkAvailability.instance
         networkAvailability?.registerNetworkAvailability(this, receiver)
     }
@@ -47,11 +56,6 @@ class MainActivity : BaseActivity() {
         mViewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
         initNavController()
         observe()
-    }
-
-    override fun onDestroy() {
-        networkAvailability?.unregisterNetworkAvailability(this, receiver)
-        super.onDestroy()
     }
 
     override fun onRequestPermissionsResult(
@@ -70,15 +74,17 @@ class MainActivity : BaseActivity() {
             }
         }
     }
-
+    //baseActivity abstract method
     override fun getActivityLayout() = R.layout.activity_main
 
+    //baseActivity abstract method
     override fun getViewBinding() {
         mBinding = binding as ActivityMainBinding
     }
 
     private fun observe() {
         mViewModel.apply {
+            //loader receiver to show loader fragment
             loader.observe(this@MainActivity, Observer { showLoader ->
                 showLoader ?: return@Observer
                 if (showLoader) {
@@ -102,6 +108,7 @@ class MainActivity : BaseActivity() {
                 }
 
             })
+            //custom message view to show messages
             notificationMessage.observe(this@MainActivity, Observer {
                 it ?: return@Observer
                 if (it.show) {
@@ -117,4 +124,9 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    override fun onDestroy() {
+        //unregister network receiver
+        networkAvailability?.unregisterNetworkAvailability(this, receiver)
+        super.onDestroy()
+    }
 }

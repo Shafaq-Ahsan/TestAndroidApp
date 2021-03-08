@@ -1,6 +1,5 @@
 package com.app.network_module.utils
 
-import com.app.network_module.BuildConfig
 import okhttp3.logging.HttpLoggingInterceptor
 
 

@@ -16,6 +16,8 @@ internal class ImagePagerAdapter(
 
 
     private var mPagerList: DataResponse? = null
+
+    //set list
     fun setData(data: DataResponse) {
         mPagerList = data //= data
         notifyDataSetChanged()
@@ -52,14 +54,21 @@ class ViewHolder(private val binding: ItemBannerImagesBinding) :
     fun bind(context: Context, data: DataResponse?, position: Int) {
         binding.apply {
             val imageView = binding.image as ImageView
-            if (data?.imageUrlsThumbnails?.size ?: 0 > 0)
+            if (data?.imageUrlsThumbnails?.size ?: 0 > 0) {
+//               to load images from disk cashe : if placeholder is in cashe it will show placeholder and in background tries to download original image
                 context.loadImage(
-                    data?.imageUrls?.get(position)?: "",
+                    data?.imageUrls?.get(position) ?: "",
                     imageView,
-                    data?.imageUrlsThumbnails?.get(0)?: ""
-                )
-            else
-                context.loadImage(data?.imageUrls?.get(position)?: "", imageView, "")
+                    data?.imageUrlsThumbnails?.get(0) ?: ""
+                )// extension funtion to show images
+            } else {
+                context.loadImage(
+                    data?.imageUrls?.get(position) ?: "",
+                    imageView,
+                    ""
+                ) // to load images from disk cashe or download
+
+            }
 
 
         }

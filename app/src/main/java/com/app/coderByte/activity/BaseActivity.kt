@@ -11,12 +11,10 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         init()
     }
-
     private fun init() {
         binding = DataBindingUtil.setContentView(this, getActivityLayout())
         getViewBinding()
     }
-
     abstract fun getActivityLayout(): Int
     override fun onResume() {
         super.onResume()

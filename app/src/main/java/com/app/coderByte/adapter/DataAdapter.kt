@@ -45,6 +45,7 @@ internal class DataAdapter(
         }
     }
 
+    //show updated list from api or livedata
     fun setData(data: ArrayList<DataResponse>) {
         this.list = data
         notifyDataSetChanged()
@@ -56,6 +57,7 @@ internal class DataAdapter(
 
 }
 
+//List view holder
 private class ListViewHolder(
     private val binding: ItemListCardBinding
 
@@ -74,6 +76,7 @@ private class ListViewHolder(
         }
     }
 
+    // to set views data
     override fun bind(
         position: Int,
         mListClickLister: ListClickListener,
@@ -101,6 +104,7 @@ private class ListViewHolder(
 
 }
 
+//Shimmer view holder
 private class ShimmerListHolder(binding: ShimmerItemListBinding) :
     RecyclerView.ViewHolder(binding.root) {
     companion object {

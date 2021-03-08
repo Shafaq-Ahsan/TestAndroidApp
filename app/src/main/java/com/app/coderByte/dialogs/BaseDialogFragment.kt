@@ -9,7 +9,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import com.app.coderByte.interfaces.InitMethods
 
-
 internal abstract class BaseDialogFragment : DialogFragment(), InitMethods {
 
 
@@ -39,18 +38,19 @@ internal abstract class BaseDialogFragment : DialogFragment(), InitMethods {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewBinding()
+        getViewBinding() //interface method
 
-        init()
+        init() //interface method
 
-        setLanguageData()
+        setLanguageData() //interface method
 
-        setLiveDataValues()
+        setLiveDataValues() //interface method
 
-        setListeners()
+        setListeners()//interface method
 
     }
 
